@@ -254,10 +254,13 @@ split themselves according to their GDP.
     those who presented a GDP *higher* than the European average and those with a *lower* GDP.
 2.  We then estimate a *wealthy score* based on the historical (from 1962 to 2007) values,
     where we account how many times a country has participated in the groups of *lower* or *higher* GDP
+3.  We then compute the financial contribution per *weathly score*
 
 ~~~
 mask_higher = data > data.mean()
-wealth_score = mask_higher.aggregate('sum', axis=1) / len(data.columns)
+wealth_score = mask_higher.sum(axis=1)
+# Can also use aggregate
+# wealth_score = mask_higher.aggregate('sum', axis=1)
 wealth_score
 ~~~
 {: .language-python}
