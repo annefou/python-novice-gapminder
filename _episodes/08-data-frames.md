@@ -484,6 +484,7 @@ data.groupby(wealth_score).sum()
 > 3.  GDP per capita for all countries for years *after* 1985.
 > 4.  GDP per capita for each country in 2007 as a multiple of 
 >     GDP per capita for that country in 1952.
+> 5.  Taking the output from the previous question, sort by GDP increase.
 {: .challenge}
 >
 > > ## Solution
@@ -509,6 +510,12 @@ data.groupby(wealth_score).sum()
 > > 4:
 > > ~~~
 > > data['gdpPercap_2007']/data['gdpPercap_1952']
+> > ~~~
+> > {: .language-python}
+> >
+> > 5:
+> > ~~~
+> > (data['gdpPercap_2007']/data['gdpPercap_1952']).sort_values()
 > > ~~~
 > > {: .language-python}
 > {: .solution}
