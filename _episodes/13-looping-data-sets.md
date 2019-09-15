@@ -168,16 +168,19 @@ data/gapminder_gdp_oceania.csv 10039.59564
 > > import glob
 > > import pandas as pd
 > > import matplotlib.pyplot as plt
-> > fig, ax = plt.subplots(1,1)
+> > fig, ax = plt.subplots(1,1, figsize=(10,10))
 > > for filename in glob.glob('data/gapminder_gdp*.csv'):
 > >     dataframe = pd.read_csv(filename)
 > >     # extract region from the filename, expected to be in the format 'data/gapminder_gdp_<region>.csv'.
 > >     # we split the string using rpartition using
 > >     # `_` as our separator, extract the _<region>.csv, and then strip the .csv extension
 > >     region = filename.rpartition('_')[-1][:-4] 
+> >     dataframe.columns = dataframe.columns.str[-4:]
 > >     dataframe.mean().plot(ax=ax, label=region)
 > > plt.legend()
-> > plt.show()
+> > plt.xlabel('Years', fontsize=16)
+> > plt.ylabel('GDP per capita', fontsize=16)
+> > plt.savefig('my_figure.png')
 > > ~~~
 > > {: .language-python}
 > {: .solution}
